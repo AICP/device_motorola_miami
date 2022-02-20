@@ -11,6 +11,8 @@ on post-fs
    # Sensors
    chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/double_tap_enabled
    chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/double_tap_pressed
+   chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_enabled
+   chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_pressed
 
 on post-fs-data
     chown system system /sys/devices/platform/soc/soc:fm_wcn39x0/elna_en
