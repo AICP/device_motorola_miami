@@ -9,9 +9,6 @@
 
 DEVICE_PATH := device/motorola/rhodep
 
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := rhodep
 
