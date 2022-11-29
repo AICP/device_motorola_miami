@@ -1,0 +1,12 @@
+//
+//  Copyright (C) 2022 The LineageOS Project
+//
+//  SPDX-License-Identifier: Apache-2.0
+//
+
+prebuilt_etc {
+    name: "init.mmi.overlay.rc",
+    src: "init.mmi.overlay.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
