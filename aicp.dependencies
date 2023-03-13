@@ -6,5 +6,10 @@
   {
     "repository": "AICP/kernel_motorola_miami",
     "target_path": "kernel/motorola/miami"
+  },
+  {
+    "repository": "moto-common/platform_vendor_egistec_interfaces",
+    "target_path": "vendor/egistec",
+    "branch": "master"
   }
 ]
