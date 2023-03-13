@@ -42,7 +42,9 @@ PRODUCT_COPY_FILES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service.miami
+    android.hardware.biometrics.fingerprint@2.3-service.miami \
+    com.motorola.hardware.biometric.fingerprint@1.0.vendor \
+    vendor.egistec.hardware.fingerprint@4.0.vendor
 
 
 PRODUCT_COPY_FILES += \
