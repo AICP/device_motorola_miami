@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2022 The LineageOS Project
+# Copyright (C) 2023 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -25,6 +25,6 @@ PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_PRODUCT=rhodep_g \
-    PRIVATE_BUILD_DESC="rhodep_g-user 12 S1SU32.73-112-22 b7d9e-63cbc release-keys"
+    PRIVATE_BUILD_DESC="rhodep_g-user 13 T1SUS33.1-124-6-3 1f802-e899d release-keys"
 
-BUILD_FINGERPRINT := motorola/rhodep_g/rhodep:12/S1SU32M.73-112-22/63cbc:user/release-keys
+BUILD_FINGERPRINT := motorola/rhodep_g/rhodep:13/T1SUS33.1-124-6-3/1f802-e899d:user/release-keys
