@@ -1,2 +1,36 @@
+# Audio
+persist.vendor.audio.fluence.voicecomm=true
+persist.vendor.audio.speaker.stereo=true
+persist.vendor.audio.stereo_speaker.spin.enable=true
+persist.vendor.audio.voicecall.speaker.stereo=false
+persist.vendor.audio.calfile0=/vendor/etc/acdbdata/Bluetooth_cal.acdb
+persist.vendor.audio.calfile1=/vendor/etc/acdbdata/General_cal.acdb
+persist.vendor.audio.calfile2=/vendor/etc/acdbdata/Global_cal.acdb
+persist.vendor.audio.calfile3=/vendor/etc/acdbdata/Handset_cal.acdb
+persist.vendor.audio.calfile4=/vendor/etc/acdbdata/Hdmi_cal.acdb
+persist.vendor.audio.calfile5=/vendor/etc/acdbdata/Headset_cal.acdb
+persist.vendor.audio.calfile6=/vendor/etc/acdbdata/Speaker_cal.acdb
+ro.vendor.audio.crystal_talk_record.supported=true
+ro.vendor.audio.crystal_talk.supported=true
+vendor.audio.feature.battery_listener.enable=false
+
 # Bluetooth
 bluetooth.device.default_name=moto g82 5G
+
+# Camera
+persist.vendor.camera.physical.num=4
+
+# Graphics
+debug.sf.latch_unsignaled=1
+debug.sf.predict_hwc_composition_strategy=0
+ro.surface_flinger.set_idle_timer_ms=250
+ro.surface_flinger.set_touch_timer_ms=1000
+ro.surface_flinger.use_smart_90_for_video=true
+vendor.display.disable_dynamic_sf_idle=1
+vendor.display.idle_time=0
+vendor.hw.sf.IdleLazyResetThresholdT=1000
+
+# Radio
+persist.vendor.radio.fetchqos=true
+persist.vendor.rcs.singlereg.feature=1
+ro.vendor.radio.imei.sv=16
