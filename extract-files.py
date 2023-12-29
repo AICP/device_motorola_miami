@@ -31,6 +31,13 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    (
+        'vendor/etc/libnfc-PN557.conf',
+        'vendor/etc/libnfc-nci_PN557.conf',
+    ): blob_fixup()
+        .regex_replace('NFC_DEBUG_ENABLED=(1|0x01)', 'NFC_DEBUG_ENABLED=0'),
+    'vendor/etc/libnfc-PN557.conf': blob_fixup()
+        .regex_replace('(NXPLOG_.*_LOGLEVEL)=0x03', '\\1=0x02'),
     'vendor/lib64/sensors.moto.so': blob_fixup()
         .add_needed('libbase_shim.so'),
 }  # fmt: skip
