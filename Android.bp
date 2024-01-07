@@ -4,7 +4,4 @@
 //
 
 soong_namespace {
-    imports: [
-        "hardware/motorola",
-    ],
 }

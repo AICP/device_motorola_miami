@@ -17,19 +17,44 @@
 
 #include "BiometricsFingerprint.h"
 
+#include <android-base/file.h>
 #include <android-base/logging.h>
+#include <fcntl.h>
+#include <poll.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
+
+#include <chrono>
 #include <cmath>
 #include <fstream>
 #include <thread>
 
-#include <fcntl.h>
-#include <poll.h>
-#include <sys/stat.h>
+#include <display/drm/sde_drm.h>
 
-#define NOTIFY_FINGER_UP IMotFodEventType::FINGER_UP
-#define NOTIFY_FINGER_DOWN IMotFodEventType::FINGER_DOWN
+enum HBM_STATE { OFF = 0, ON = 2 };
 
-#define FOD_UI_PATH "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_ui"
+void setHbmState(int state) {
+    struct panel_param_info param_info;
+    int32_t node = open("/dev/dri/card0", O_RDWR);
+    int32_t ret = 0;
+
+    if (node < 0) {
+        LOG(ERROR) << "Failed to get card0!";
+        return;
+    }
+
+    param_info.param_idx = PARAM_HBM;
+    param_info.value = state;
+
+    ret = ioctl(node, DRM_IOCTL_SET_PANEL_FEATURE, &param_info);
+    if (ret < 0) {
+        LOG(ERROR) << "IOCTL call failed with ret = " << ret;
+    } else {
+        LOG(INFO) << "HBM state set successfully. New state: " << state;
+    }
+
+    close(node);
+}
 
 namespace android {
 namespace hardware {
@@ -38,52 +63,9 @@ namespace fingerprint {
 namespace V2_3 {
 namespace implementation {
 
-static bool readBool(int fd) {
-    char c;
-    int rc;
-
-    rc = lseek(fd, 0, SEEK_SET);
-    if (rc) {
-        LOG(ERROR) << "failed to seek fd, err: " << rc;
-        return false;
-    }
-
-    rc = read(fd, &c, sizeof(char));
-    if (rc != 1) {
-        LOG(ERROR) << "failed to read bool from fd, err: " << rc;
-        return false;
-    }
-
-    return c != '0';
-}
-
 BiometricsFingerprint::BiometricsFingerprint() {
     biometrics_2_1_service = IBiometricsFingerprint_2_1::getService();
-    mMotoFingerprint = IMotoFingerPrint::getService();
-
-    std::thread([this]() {
-        int fd = open(FOD_UI_PATH, O_RDONLY);
-        if (fd < 0) {
-            LOG(ERROR) << "failed to open fd, err: " << fd;
-            return;
-        }
-
-        struct pollfd fodUiPoll = {
-                .fd = fd,
-                .events = POLLERR | POLLPRI,
-                .revents = 0,
-        };
-
-        while (true) {
-            int rc = poll(&fodUiPoll, 1, -1);
-            if (rc < 0) {
-                LOG(ERROR) << "failed to poll fd, err: " << rc;
-                continue;
-            }
-            mMotoFingerprint->sendFodEvent(readBool(fd) ? NOTIFY_FINGER_DOWN : NOTIFY_FINGER_UP, {},
-                                           [](IMotFodEventResult, const hidl_vec<signed char>&) {});
-        }
-    }).detach();
+    rbs_4_0_service = IBiometricsFingerprintRbs::getService();
 }
 
 Return<uint64_t> BiometricsFingerprint::setNotify(
@@ -109,6 +91,7 @@ Return<uint64_t> BiometricsFingerprint::getAuthenticatorId() {
 }
 
 Return<RequestStatus> BiometricsFingerprint::cancel() {
+    setHbmState(OFF);
     return biometrics_2_1_service->cancel();
 }
 
@@ -126,6 +109,7 @@ Return<RequestStatus> BiometricsFingerprint::setActiveGroup(uint32_t gid,
 }
 
 Return<RequestStatus> BiometricsFingerprint::authenticate(uint64_t operationId, uint32_t gid) {
+    setHbmState(OFF);
     return biometrics_2_1_service->authenticate(operationId, gid);
 }
 
@@ -134,10 +118,36 @@ Return<bool> BiometricsFingerprint::isUdfps(uint32_t) {
 }
 
 Return<void> BiometricsFingerprint::onFingerDown(uint32_t, uint32_t, float, float) {
+    setHbmState(ON);
+    extraApiWrapper(101);
+
+    std::thread([this]() {
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        BiometricsFingerprint::onFingerUp();
+    }).detach();
+
     return Void();
 }
 
 Return<void> BiometricsFingerprint::onFingerUp() {
+    setHbmState(OFF);
+    extraApiWrapper(102);
+    return Void();
+}
+
+Return<void> BiometricsFingerprint::extraApiWrapper(int cidValue) {
+    int cid[1] = {cidValue};
+
+    // Create a std::vector<uint8_t> to store the data from 'cid'
+    std::vector<uint8_t> cid_data(reinterpret_cast<uint8_t*>(cid),
+                                  reinterpret_cast<uint8_t*>(cid) + sizeof(cid));
+
+    // Create the hidl_vec<uint8_t> from the std::vector<uint8_t>
+    ::android::hardware::hidl_vec<uint8_t> hidl_cid = cid_data;
+
+    // Call extra_api with the correct input buffer and an empty lambda callback
+    rbs_4_0_service->extra_api(7, hidl_cid, [](const ::android::hardware::hidl_vec<uint8_t>&) {});
+
     return Void();
 }
 
