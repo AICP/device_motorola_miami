@@ -9,65 +9,135 @@ on post-fs
    chown system system /sys/devices/platform/soc/4804000.ufshc/clkgate_enable
    chown system system /sys/devices/platform/soc/4804000.ufshc/devfreq/4804000.ufshc/min_freq
 
-#fps dual sensor
-service chipone_ident /vendor/bin/hw/chipone_ident
-    class late_start
-    user system
-    group system
-    oneshot
-    disabled
-
-service vendor.ident-fps-overlay-sh /vendor/bin/init.oem.fingerprint.overlay.sh
-    class core
-    user root
-    group drmrpc system
-    oneshot
-    disabled
-
 on post-fs-data
-    exec_start vendor.ident-fps-overlay-sh
-    chown system system /dev/fpsensor
-    chmod 0660 /dev/fpsensor
     chown system system /sys/devices/platform/soc/soc:fm_wcn39x0/elna_en
 
-  # Change ownership and permission for cp-standalone factory testing
-  chown system system /sys/class/power_supply/cp-standalone/voltage_now
-  chown system system /sys/bus/iio/devices/iio:device5/in_index_sc8549_cp_enable_input
-  chmod 0644 /sys/class/power_supply/cp-standalone/voltage_now
-  chmod 0664 /sys/bus/iio/devices/iio:device5/in_index_sc8549_cp_enable_input
+    chown system system /sys/bus/iio/devices/iio:device5/in_index_sc8549_cp_enable_input
+    chmod 0664 /sys/bus/iio/devices/iio:device5/in_index_sc8549_cp_enable_input
+    # Add for Egis Fod fingerprint
+    mkdir /data/vendor/egis 0770 system system
+    mkdir /mnt/vendor/persist/egis 0770 system system
+    mkdir /data/vendor/tzstorage/egis 0770 system system
+    mkdir /data/vendor/egis/cqa  0770 system system
 
-  chown vendor_pwric vendor_pwric /sys/class/power_supply/cp-standalone/force_chg_auto_enable
+    # Add for after-sale ois gyro cal
+    mkdir /mnt/vendor/persist/camera/gyro_compat 0770 vendor_tcmd camera
+
+    # Add for OIS hall test result
+    mkdir /mnt/vendor/persist/camera/ois_hall 0770 vendor_tcmd camera
+
+    # Add for fod fps calibration
+    chown system system /sys/class/backlight/panel0-backlight/brightness
+    chown system system /sys/class/drm/card0-DSI-1/panelName
+    chown system system /sys/class/drm/card0-DSI-1/panelId
+    chown system system /d/dri/0/debug/motUtil
+    chmod 0666 /d/dri/0/debug/motUtil;
+    chmod 0666 /sys/class/backlight/panel0-backlight/brightness
+    chmod 0666 /sys/class/drm/card0-DSI-1/panelName
+    chmod 0666 /sys/class/drm/card0-DSI-1/panelId
+    # change permission for goodix TP
+    chmod 0666 /dev/gtp_tools
+
+    # Change ownership and permission for bq25960 factory testing
+    chown system system /sys/class/power_supply/bq25960-master/device/force_chg_auto_enable
+    chmod 0664 /sys/class/power_supply/bq25960-master/device/force_chg_auto_enable
+    chown system system /sys/class/power_supply/bq25960-slave/device/force_chg_auto_enable
+    chmod 0664 /sys/class/power_supply/bq25960-slave/device/force_chg_auto_enable
+    chown system system /sys/class/power_supply/bq25960-master/voltage_now
+    chmod 0664 /sys/class/power_supply/bq25960-master/voltage_now
+    chown system system /sys/class/power_supply/bq25960-slave/voltage_now
+    chmod 0664 /sys/class/power_supply/bq25960-slave/voltage_now
 
 on fs
+    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mm8013c_fg_mmi.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/goodix_brl_mmi.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mmi_charger.ko
-    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/bq2597x_mmi_iio.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mmi_discrete_charger_class.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/sgm4154x_charger.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/bq2589x_charger.ko
+    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/bq25980_mmi_iio.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mmi_discrete_charger.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/qpnp_adaptive_charge.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/tcpc_class.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/tcpc_rt1711h.ko
-    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/tcpc_sgm7220.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/rt_pd_manager.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mmi_discrete_turbo_charger.ko
+    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/cps4019_wls_charger.ko
+    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/aw862x.ko
+    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/rbs_fod_mmi.ko
+
+on early-boot
+    # Add for egis fingerprint
+    chown system system /dev/esfp0
+    chmod 0664 /dev/esfp0
+
+on boot
+    # change permission of red/green/blue leds
+    chown system system /sys/class/leds/red_moto/brightness
+    chmod 0666 /sys/class/leds/red_moto/brightness
+    chown system system /sys/class/leds/green_moto/brightness
+    chmod 0666 /sys/class/leds/green_moto/brightness
+    chown system system /sys/class/leds/blue_moto/brightness
+    chmod 0666 /sys/class/leds/blue_moto/brightness
+
+    #change leds system nodes ownership for HAL service
+    chown system system /sys/class/leds/red_moto/blink
+    chmod 0666 /sys/class/leds/red_moto/blink
+    chown system system /sys/class/leds/green_moto/blink
+    chmod 0666 /sys/class/leds/green_moto/blink
+    chown system system /sys/class/leds/blue_moto/blink
+    chmod 0666 /sys/class/leds/blue_moto/blink
+
+    chown system system /sys/class/leds/red_moto/led_time
+    chmod 0666 /sys/class/leds/red_moto/led_time
+    chown system system /sys/class/leds/green_moto/led_time
+    chmod 0666 /sys/class/leds/green_moto/led_time
+    chown system system /sys/class/leds/blue_moto/led_time
+    chmod 0666 /sys/class/leds/blue_moto/led_time
+
+    # touch api
+    chown system system /sys/class/touchscreen/primary/sample
+    chmod 0660 /sys/class/touchscreen/primary/sample
+    chown system system /sys/class/touchscreen/primary/edge
+    chmod 0660 /sys/class/touchscreen/primary/edge
+
+    # Set wlc perms for chg
+    chown system system /sys/class/power_supply/wireless/device/tx_mode
+    chown system system /sys/class/power_supply/wireless/device/wls_input_current_limit
+    chown vendor_tcmd system /sys/class/power_supply/wireless/device/tx_mode_vout
+    chmod 0660 /sys/class/power_supply/wireless/device/tx_mode
+    chmod 0660 /sys/class/power_supply/wireless/device/wls_input_current_limit
+
+    # Set wlc perms for HAL
+    chown system system /sys/class/power_supply/wireless/device/wlc_light_ctl
+    chown system system /sys/class/power_supply/wireless/device/wlc_fan_speed
+    chown system system /sys/class/power_supply/wireless/device/wlc_st_changed
+    chown system system /sys/class/power_supply/wireless/device/wlc_tx_power
+    chown system system /sys/class/power_supply/wireless/device/wlc_tx_type
+    chmod 0660 /sys/class/power_supply/wireless/device/wlc_light_ctl
+    chmod 0660 /sys/class/power_supply/wireless/device/wlc_fan_speed
+
 on boot && property:ro.vendor.mot.gki.path=5.4-gki
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/nfc_i2c.ko
 
 on charger
+    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mm8013c_fg_mmi.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mmi_charger.ko
-    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/bq2597x_mmi_iio.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mmi_discrete_charger_class.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/sgm4154x_charger.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/bq2589x_charger.ko
+    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/bq25980_mmi_iio.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mmi_discrete_charger.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/qpnp_adaptive_charge.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/tcpc_class.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/tcpc_rt1711h.ko
-    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/tcpc_sgm7220.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/rt_pd_manager.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mmi_discrete_turbo_charger.ko
+    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/cps4019_wls_charger.ko
+    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/aw862x.ko
+
+on early-init
+   exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules leds_aw2033
 
 service capsense_reset /vendor/bin/capsense_reset
    class core
@@ -77,3 +147,7 @@ service capsense_reset /vendor/bin/capsense_reset
 
 on property:sys.boot_completed=1
     start capsense_reset
+
+on property:ro.boot.mode=charger && property:vold.post_fs_data_done=1
+    load_persist_props
+
