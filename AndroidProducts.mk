@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_miami.mk
+    $(LOCAL_DIR)/aicp_miami.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_miami-user \
-    lineage_miami-userdebug \
-    lineage_miami-eng
+    aicp_miami-user \
+    aicp_miami-userdebug \
+    aicp_miami-eng
