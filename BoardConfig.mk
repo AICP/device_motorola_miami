@@ -17,7 +17,7 @@ TARGET_SCREEN_DENSITY := 400
 
 # Kernel
 BOARD_KERNEL_CMDLINE += androidboot.hab.product=miami
-TARGET_KERNEL_CONFIG += vendor/aicp_miami_defconfig
+TARGET_KERNEL_CONFIG := vendor/aicp_miami_defconfig
 
 # Kernel Modules
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load))
