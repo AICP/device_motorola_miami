@@ -1,9 +1,9 @@
-Device configuration for Motorola moto G82 5G
+Device configuration for Motorola moto edge 30 neo
 =========================================
 
-The Motorola moto G82 5G (codenamed _"rhodep"_) is a midrange smartphone from Motorola.
+The Motorola moto edge 30 neo (codenamed _"miami"_) is a midrange smartphone from Motorola.
 
-It was announced on May 2022 and released on June 2022.
+It was announced on September 2022 and released on October 2022.
 
 ## Device specifications
 
@@ -15,13 +15,13 @@ GPU     | Adreno 619
 Memory  | 6/8 GB RAM
 Shipped Android Version | 12
 Storage | 128 GB
-Battery | Non-removable Li-Po 5000 mAh battery
+Battery | Non-removable Li-Po 4020 mAh battery
 Display | 1080 x 2400 pixels, 20:9 ratio, 6.6 inches, 120Hz AMOLED(~402 ppi density)
 Back Camera  | 50 MP (f/1.8) + 8MP (f/2.2) + 2MP (f/2.4)
 Front Camera  | 16 MP (f/2.2)
 
 ## Device picture
-![moto G82 5g](https://motorolain.vtexassets.com/arquivos/ids/157314-1200-auto?width=1200&height=auto&aspect=true "moto G82 5g")
+![moto edge_30_neo](https://fdn2.gsmarena.com/vv/bigpic/motorola-edge30-neo-.jpg "moto edgee 30 neo")
 
 
 ## Copyright
@@ -29,6 +29,7 @@ Front Camera  | 16 MP (f/2.2)
 ```
 #
 # Copyright (C) 2022 The LineageOS Project
+# Copyright (C) 2023 Android Ice Cold Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #

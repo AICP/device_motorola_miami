@@ -14,7 +14,7 @@ fi
 
 set -e
 
-export DEVICE=rhodep
+export DEVICE=miami
 export DEVICE_COMMON=sm6375-common
 export VENDOR=motorola
 

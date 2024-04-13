@@ -50,4 +50,4 @@ PRODUCT_SOONG_NAMESPACES += \
 $(call inherit-product, device/motorola/sm6375-common/common.mk)
 
 # Inherit from vendor blobs
-$(call inherit-product, vendor/motorola/rhodep/rhodep-vendor.mk)
+$(call inherit-product, vendor/motorola/miami/miami-vendor.mk)

@@ -7,17 +7,17 @@
 # Inherit from motorola sm6375-common
 -include device/motorola/sm6375-common/BoardConfigCommon.mk
 
-DEVICE_PATH := device/motorola/rhodep
+DEVICE_PATH := device/motorola/miami
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := rhodep
+TARGET_BOOTLOADER_BOARD_NAME := miami
 
 # Display
 TARGET_SCREEN_DENSITY := 400
 
 # Kernel
-BOARD_KERNEL_CMDLINE += androidboot.hab.product=rhodep
-TARGET_KERNEL_CONFIG += vendor/rhodep_defconfig
+BOARD_KERNEL_CMDLINE += androidboot.hab.product=miami
+TARGET_KERNEL_CONFIG += vendor/miami_defconfig
 
 # Kernel Modules
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load))
@@ -43,4 +43,4 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 VENDOR_SECURITY_PATCH := 2023-10-01
 
 # Inherit from the proprietary version
--include vendor/motorola/rhodep/BoardConfigVendor.mk
+-include vendor/motorola/miami/BoardConfigVendor.mk

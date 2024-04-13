@@ -6,7 +6,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),rhodep)
+ifeq ($(TARGET_DEVICE),miami)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
