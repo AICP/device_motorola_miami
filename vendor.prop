@@ -15,7 +15,7 @@ ro.vendor.audio.crystal_talk.supported=true
 vendor.audio.feature.battery_listener.enable=false
 
 # Bluetooth
-bluetooth.device.default_name=moto g82 5G
+bluetooth.device.default_name=moto edge 30 neo
 
 # Camera
 persist.vendor.camera.physical.num=4
