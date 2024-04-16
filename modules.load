@@ -23,6 +23,7 @@ leds_aw99703.ko
 leds_lm3697.ko
 machine_dlkm.ko
 mbhc_dlkm.ko
+mm8013c_fg_mmi.ko
 mmi_annotate.ko
 mmi_charger.ko
 mmi_discrete_charger_class.ko
