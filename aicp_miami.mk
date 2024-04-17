@@ -22,6 +22,10 @@ PRODUCT_MODEL := moto edge 30 neo
 
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
+# AICP Device Maintainers
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    DEVICE_MAINTAINERS="Julian Veit (Claymore1297)"
+
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="miami_g-user 14 U1SSMS34.31-64-10-6 00f312-59e667 release-keys MUR1-0.90" \
     BuildFingerprint=motorola/miami_g/miami:14/U1SSMS34.31-64-10-6/00f312-59e667:user/release-keys \
