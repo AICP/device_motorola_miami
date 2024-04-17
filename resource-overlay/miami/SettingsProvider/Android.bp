@@ -1,5 +1,5 @@
 runtime_resource_overlay {
-    name: "SettingsProviderResRhodep",
+    name: "SettingsProviderResMiami",
     sdk_version: "current",
     vendor: true
 }

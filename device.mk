@@ -17,7 +17,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Overlay
 PRODUCT_PACKAGES += \
-    SettingsProviderResRhodep
+    SettingsProviderResMiami
 
 # Audio
 PRODUCT_COPY_FILES += \
