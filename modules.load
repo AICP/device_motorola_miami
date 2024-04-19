@@ -29,8 +29,6 @@ btpower.ko
 aw882xx_k419.ko
 wcd_core_dlkm.ko
 wcd937x_slave_dlkm.ko
-qca_cld3_wlan.ko
-qca_cld3_wlan.ko
 rmnet_core.ko
 rmnet_ctl.ko
 rmnet_offload.ko
@@ -44,8 +42,6 @@ exfat.ko
 moto_f_usbnet.ko
 watchdogtest.ko
 qpnp_adaptive_charge.ko
-rbs_fod_mmi.ko
-aw862x.ko
 wl2868c.ko
 cci_intf.ko
 sensors_class.ko
@@ -69,6 +65,4 @@ leds_aw99703.ko
 leds_lm3697.ko
 mmi_discrete_turbo_charger.ko
 wl2864c.ko
-bq25980_mmi_iio.ko
 leds_aw2033.ko
-cps4019_wls_charger.ko
