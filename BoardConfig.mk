@@ -33,7 +33,6 @@ TARGET_SCREEN_DENSITY := 400
 # Kernel
 BOARD_KERNEL_CMDLINE += androidboot.hab.product=miami
 TARGET_KERNEL_CONFIG := vendor/aicp_miami_defconfig
-TARGET_KERNEL_CONFIG += vendor/ext_config/moto-holi-miami.config
 TARGET_KERNEL_SOURCE := kernel/motorola/sm6375
 
 # Kernel Modules
