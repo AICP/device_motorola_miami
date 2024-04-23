@@ -29,6 +29,8 @@ ro.surface_flinger.use_smart_90_for_video=true
 vendor.display.disable_dynamic_sf_idle=1
 vendor.display.idle_time=0
 vendor.hw.sf.IdleLazyResetThresholdT=1000
+debug.sf.scroll_boost_refreshrate=120
+debug.sf.touch_boost_refreshrate=90
 
 # Radio
 persist.vendor.radio.fetchqos=true
