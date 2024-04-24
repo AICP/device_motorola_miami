@@ -18,7 +18,11 @@ vendor.audio.feature.battery_listener.enable=false
 bluetooth.device.default_name=moto edge 30 neo
 
 # Camera
-persist.vendor.camera.physical.num=4
+persist.vendor.motosxf.enable=true
+persist.vendor.camera.expose.aux=1
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.motorola.camera3,com.motorola.motocit
+vendor.camera.aux.packagelist2=com.motorola.ccc,com.android.settings
+persist.vendor.camera.physical.num=3
 
 # Graphics
 debug.sf.latch_unsignaled=1
@@ -36,3 +40,4 @@ debug.sf.touch_boost_refreshrate=90
 persist.vendor.radio.fetchqos=true
 persist.vendor.rcs.singlereg.feature=1
 ro.vendor.radio.imei.sv=16
+
