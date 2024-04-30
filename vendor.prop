@@ -38,6 +38,6 @@ debug.sf.touch_boost_refreshrate=90
 
 # Radio
 persist.vendor.radio.fetchqos=true
-persist.vendor.rcs.singlereg.feature=1
-ro.vendor.radio.imei.sv=16
+persist.vendor.radio.snapshot_enabled=1
+persist.vendor.radio.snapshot_timer=22
 
