@@ -18,7 +18,8 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Overlay
 PRODUCT_PACKAGES += \
     FrameworksResMiami \
-    SettingsProviderResMiami
+    SettingsProviderResMiami \
+    SystemUIResMiami
 
 # Audio
 PRODUCT_COPY_FILES += \
