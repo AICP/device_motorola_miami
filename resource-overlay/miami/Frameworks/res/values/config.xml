@@ -135,12 +135,13 @@
          @see https://www.w3.org/TR/SVG/paths.html#PathData
          -->
     <string translatable="false" name="config_mainBuiltInDisplayCutout">
-        M -35,0
-        L 35,0
-		L 35,105
-		L -35,105
-		Z
-	</string>
+            M 0,0
+        h -28.9
+        v 85
+        h 59.5
+        v -85
+        Z
+    </string>
 
 	<!-- Indicate whether to allow the device to suspend when the screen is off
          due to the proximity sensor.  This resource should only be set to true
@@ -199,8 +200,8 @@
     <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
     <integer-array name="config_udfps_sensor_props" translatable="false" >
         <item>540</item> <!-- sensorLocationX -->
-        <item>2164</item> <!-- sensorLocationY -->
-        <item>91</item> <!-- sensorRadius -->
+        <item>2159</item> <!-- sensorLocationY -->
+        <item>96</item> <!-- sensorRadius -->
     </integer-array>
 
     <!-- Screen brightness used to dim the screen when the user activity
