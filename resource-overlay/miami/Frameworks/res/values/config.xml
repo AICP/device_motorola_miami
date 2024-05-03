@@ -199,8 +199,8 @@
     <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
     <integer-array name="config_udfps_sensor_props" translatable="false" >
         <item>540</item> <!-- sensorLocationX -->
-        <item>2164</item> <!-- sensorLocationY -->
-        <item>91</item> <!-- sensorRadius -->
+        <item>1851</item> <!-- sensorLocationY -->
+        <item>96</item> <!-- sensorRadius -->
     </integer-array>
 
     <!-- Screen brightness used to dim the screen when the user activity
