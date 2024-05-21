@@ -71,7 +71,7 @@
     <integer-array name="config_udfps_sensor_props" translatable="false" >
         <item>540</item> <!-- sensorLocationX -->
         <item>2159</item> <!-- sensorLocationY -->
-        <item>101</item> <!-- sensorRadius -->
+        <item>91</item> <!-- sensorRadius -->
     </integer-array>
 
     <!-- Vibrator pattern for feedback about a long screen/key press -->
