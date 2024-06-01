@@ -2,5 +2,9 @@
   {
     "repository": "AICP/device_motorola_sm6375-common",
     "target_path": "device/motorola/sm6375-common"
+  },
+  {
+    "repository": AICP/kernel_motorola_miami",
+    "target_path": "kernel/motorola/miami",
   }
 ]
