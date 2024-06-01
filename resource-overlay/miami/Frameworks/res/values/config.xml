@@ -5,11 +5,10 @@
 -->
 <resources>
     <string translatable="false" name="config_mainBuiltInDisplayCutout">
-            M 0,0
-        h -28.9
-        v 85
-        h 59.5
-        v -85
+        M -35,0
+        L 35,0
+        L 35,105
+        L -35,105
         Z
     </string>
 
