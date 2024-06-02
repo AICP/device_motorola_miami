@@ -5,7 +5,7 @@
 -->
 <resources>
     <!-- The radius of the enrollment progress bar, in DP. -->
-    <integer name="config_udfpsEnrollProgressBar">85</integer>
+    <integer name="config_udfpsEnrollProgressBar">65</integer>
 
     <!-- Color of the UDFPS Pressed view -->
     <color name="config_udfpsColor">#ffffff</color>
