@@ -131,11 +131,13 @@ Return<bool> BiometricsFingerprint::isUdfps(uint32_t) {
 }
 
 Return<void> BiometricsFingerprint::onFingerDown(uint32_t, uint32_t, float, float) {
-    return Void();
+    return mMotoFingerprint->sendFodEvent(NOTIFY_FINGER_DOWN, {},
+          [](IMotFodEventResult, const hidl_vec<signed char>&) {});
 }
 
 Return<void> BiometricsFingerprint::onFingerUp() {
-    return Void();
+    return mMotoFingerprint->sendFodEvent(NOTIFY_FINGER_UP, {},
+          [](IMotFodEventResult, const hidl_vec<signed char>&) {});
 }
 
 }  // namespace implementation
