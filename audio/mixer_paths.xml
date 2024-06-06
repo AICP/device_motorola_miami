@@ -3407,6 +3407,10 @@
         <path name="amic3" />
     </path>
 
+    <path name="dmic-nn">
+        <path name="amic3" />
+    </path>
+
     <path name="camcorder-mic-bf">
         <!-- main mic volume -->
         <ctl name="ADC1 Volume" value="8" />
