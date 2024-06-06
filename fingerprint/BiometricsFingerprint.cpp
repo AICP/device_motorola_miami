@@ -29,7 +29,7 @@
 #define NOTIFY_FINGER_UP IMotFodEventType::FINGER_UP
 #define NOTIFY_FINGER_DOWN IMotFodEventType::FINGER_DOWN
 
-#define FOD_UI_PATH "/sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_pressed"
+#define FOD_UI_PATH "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_ui"
 
 namespace android {
 namespace hardware {
