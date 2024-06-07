@@ -100,7 +100,7 @@ blocklist moto_f_usbnet
 #
 
 blocklist fpsensor_spi_tee
-blocklist rbs_fps_mmi
+blocklist rbs_fod_mmi
 blocklist focal_fps_mmi
 blocklist fpc1020_mmi
 blocklist qpnp_adaptive_charge

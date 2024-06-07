@@ -43,7 +43,7 @@ exfat.ko
 moto_f_usbnet.ko
 watchdogtest.ko
 qpnp_adaptive_charge.ko
-rbs_fod_mmi.ko
+rbs_fps_mmi.ko
 aw862x.ko
 wl2868c.ko
 cci_intf.ko
