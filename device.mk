@@ -21,6 +21,9 @@ PRODUCT_PACKAGES += \
     SettingsProviderResMiami \
     SystemUIResMiami
 
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-aicp
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
