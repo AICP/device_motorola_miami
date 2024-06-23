@@ -30,6 +30,9 @@ PRODUCT_PACKAGES += \
     WifiResDevice
 
 # Audio
+PRODUCT_PACKAGES += \
+    firmware_aw_cali.bin_symlink
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
