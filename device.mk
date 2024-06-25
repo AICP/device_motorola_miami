@@ -58,6 +58,10 @@ PRODUCT_PACKAGES += \
     SecureElement \
     android.hardware.nfc@1.2-service
 
+# recovery
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/root/init.recovery.miami.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.miami.rc
+
 # Shipping level
 PRODUCT_SHIPPING_API_LEVEL := 31
 
