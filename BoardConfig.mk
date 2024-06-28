@@ -3,16 +3,16 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/motorola/dubai
+DEVICE_PATH := device/motorola/miami
 
-# Inherit from motorola sm7325-common
-include device/motorola/sm7325-common/BoardConfigCommon.mk
+# Inherit from motorola sm6375-common
+include device/motorola/sm6375-common/BoardConfigCommon.mk
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := dubai
+TARGET_BOOTLOADER_BOARD_NAME := miami
 
 # Fingerprint
-TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.dubai
+TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.miami
 SOONG_CONFIG_qtidisplay_udfps := true
 
 # HIDL
@@ -20,8 +20,8 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/device_framework_ma
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Kernel
-BOARD_KERNEL_CMDLINE += androidboot.hab.product=dubai
-TARGET_KERNEL_CONFIG += vendor/lineage_dubai.config
+BOARD_KERNEL_CMDLINE += androidboot.hab.product=miami
+TARGET_KERNEL_CONFIG += vendor/lineage_miami.config
 
 # Kernel Modules
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load))
@@ -49,4 +49,4 @@ BOARD_AVB_ROLLBACK_INDEX := 29
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := 29
 
 # inherit from the proprietary version
-include vendor/motorola/dubai/BoardConfigVendor.mk
+include vendor/motorola/miami/BoardConfigVendor.mk

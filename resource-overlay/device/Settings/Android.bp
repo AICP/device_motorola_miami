@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "SettingsResDubai",
+    name: "SettingsResMiami",
     vendor: true,
 }

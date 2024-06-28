@@ -4,4 +4,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_dubai.mk
+    $(LOCAL_DIR)/lineage_miami.mk

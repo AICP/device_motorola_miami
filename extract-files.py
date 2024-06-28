@@ -20,7 +20,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'vendor/motorola/sm7325-common',
+    'vendor/motorola/sm6375-common',
     'hardware/motorola',
     'hardware/qcom-caf/sm8350',
     'hardware/qcom-caf/wlan',
@@ -48,7 +48,7 @@ extract_fns: extract_fns_user_type = {
 }
 
 module = ExtractUtilsModule(
-    'dubai',
+    'miami',
     'motorola',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
@@ -60,6 +60,6 @@ module = ExtractUtilsModule(
 
 if __name__ == '__main__':
     utils = ExtractUtils.device_with_common(
-        module, 'sm7325-common', module.vendor
+        module, 'sm6375-common', module.vendor
     )
     utils.run()

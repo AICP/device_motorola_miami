@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "SystemUIResDubai",
+    name: "SystemUIResMiami",
     vendor: true,
 }

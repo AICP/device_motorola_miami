@@ -4,7 +4,7 @@
 //
 
 cc_library_shared {
-    name: "sensors.dubai",
+    name: "sensors.miami",
     defaults: ["hidl_defaults"],
     srcs: [
         "Sensor.cpp",
@@ -28,7 +28,7 @@ cc_library_shared {
         "android.hardware.sensors@2.X-multihal",
     ],
     cflags: [
-        "-DLOG_TAG=\"sensors.dubai\"",
+        "-DLOG_TAG=\"sensors.miami\"",
     ],
     vendor: true,
 }
