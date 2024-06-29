@@ -17,7 +17,7 @@ SOONG_CONFIG_qtidisplay_udfps := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE += androidboot.hab.product=miami
-TARGET_KERNEL_CONFIG += vendor/lineage_miami.config
+TARGET_KERNEL_CONFIG += vendor/ext_config/moto-holi-miami.config
 
 # Kernel Modules
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load))

@@ -84,8 +84,6 @@ blocklist vmw_vsock_virtio_transport
 blocklist vmw_vsock_virtio_transport_common
 blocklist vsock_diag
 blocklist vsock
-blocklist qca_cld3_wlan
-blocklist qca_cld3_qca6390
 blocklist torture
 blocklist locktorture
 blocklist rcutorture
@@ -93,11 +91,30 @@ blocklist rcutorture
 #
 # Motorola platform module block list
 #
-
 blocklist utags
+blocklist watchdogtest
+blocklist moto_f_usbnet
 # Copyright (c) 2019-2020, The Linux Foundation. All rights reserved.
 #
 # Motorola product module block list
 #
 
-
+blocklist fpsensor_spi_tee
+blocklist rbs_fps_mmi
+blocklist focal_fps_mmi
+blocklist fpc1020_mmi
+blocklist qpnp_adaptive_charge
+blocklist goodix_brl_mmi
+blocklist tcpc_class
+blocklist tcpc_rt1711h
+blocklist rt_pd_manager
+blocklist mmi_charger
+blocklist mmi_discrete_charger_class
+blocklist mmi_discrete_charger
+blocklist sgm4154x_charger
+blocklist bq2589x_charger
+blocklist mmi_discrete_turbo_charger
+blocklist bq25980_mmi_iio
+blocklist leds_aw2033
+blocklist cps4019_wls_charger
+blocklist mm8013c_fg_mmi
