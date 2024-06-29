@@ -52,10 +52,6 @@ $(foreach f,$(wildcard $(LOCAL_PATH)/rootdir/etc/init/*.rc),\
 $(foreach f,$(wildcard $(LOCAL_PATH)/rootdir/bin/*.sh),\
         $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/bin/$(notdir $f)))
 
-# Keylayout
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/keylayout/goodix_ts.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/goodix_ts.kl
-
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2-service.st \
@@ -76,10 +72,6 @@ PRODUCT_COPY_FILES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
-
-# Thermal
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine-miami-game-perf.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-miami.conf
 
 # Inherit from vendor blobs
 $(call inherit-product, vendor/motorola/miami/miami-vendor.mk)

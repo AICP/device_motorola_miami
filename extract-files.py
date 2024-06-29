@@ -20,13 +20,9 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'vendor/motorola/sm6375-common',
+    'device/motorola/miami',
     'hardware/motorola',
-    'hardware/qcom-caf/sm8350',
-    'hardware/qcom-caf/wlan',
-    'vendor/qcom/opensource/commonsys-intf/display',
-    'vendor/qcom/opensource/commonsys/display',
-    'vendor/qcom/opensource/dataservices',
+    'vendor/motorola/sm6375-common',
     'vendor/qcom/opensource/display',
 ]
 
@@ -35,11 +31,7 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
-    'product/priv-app/MotCamera4/MotCamera4.apk': blob_fixup()
-        .apktool_patch('MotCamera4-patches'),
-    ('vendor/lib/libmot_chi_desktop_helper.so', 'vendor/lib64/libmot_chi_desktop_helper.so'): blob_fixup()
-        .add_needed('libgui_shim_vendor.so'),
-    ('vendor/bin/STFlashTool', 'vendor/lib64/sensors.moto.so'): blob_fixup()
+    'vendor/lib64/sensors.moto.so': blob_fixup()
         .add_needed('libbase_shim.so'),
 }  # fmt: skip
 
