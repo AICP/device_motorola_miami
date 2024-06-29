@@ -18,6 +18,7 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 400dpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
+# Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 31
 
 # Inherit from motorola sm6375-common
