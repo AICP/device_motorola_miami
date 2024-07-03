@@ -63,7 +63,7 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Security
-VENDOR_SECURITY_PATCH := 2023-10-01
+VENDOR_SECURITY_PATCH := 2024-05-01
 
 # Inherit from the proprietary version
 -include vendor/motorola/miami/BoardConfigVendor.mk
