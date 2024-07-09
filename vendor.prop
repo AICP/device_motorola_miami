@@ -40,4 +40,5 @@ debug.sf.touch_boost_refreshrate=90
 persist.vendor.radio.fetchqos=true
 persist.vendor.rcs.singlereg.feature=1
 ro.vendor.radio.imei.sv=16
+persist.radio.multisim.config=dsds
 
