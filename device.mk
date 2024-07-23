@@ -53,10 +53,11 @@ PRODUCT_PACKAGES += \
     init.mmi.overlay.rc
 
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
     Tag \
-    SecureElement \
-    android.hardware.nfc@1.2-service
+    android.hardware.nfc@1.2.vendor \
+    com.android.nfc_extras \
+    libchrome.vendor \
+    nqnfcinfo
 
 # recovery
 PRODUCT_COPY_FILES += \
