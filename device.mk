@@ -55,8 +55,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     Tag \
-    SecureElement \
-    android.hardware.nfc@1.2-service
+    android.hardware.nfc@1.2-service.samsung
 
 # recovery
 PRODUCT_COPY_FILES += \
