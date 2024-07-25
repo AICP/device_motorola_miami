@@ -57,7 +57,8 @@ PRODUCT_PACKAGES += \
     Tag \
     android.hardware.nfc@1.2-service.samsung \
     com.android.nfc_extras \
-    nqnfcinfo
+    nqnfcinfo \
+    libnxp_shim
 
 # recovery
 PRODUCT_COPY_FILES += \
