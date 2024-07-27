@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2021, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <dimen name="config_screenBrightnessDimFloat">0.00396</dimen>
+    <dimen name="config_screenBrightnessSettingDefaultFloat">0.38188976</dimen>
+    <dimen name="config_screenBrightnessSettingMinimumFloat">0.00396</dimen>
+    <dimen name="status_bar_height">112.0px</dimen>
+    <dimen name="status_bar_height_landscape">24.0dp</dimen>
+    <dimen name="status_bar_height_portrait">112.0px</dimen>
+    <dimen name="status_bar_padding_top_portrait">2.0px</dimen>
+    <dimen name="zz_moto_fod_high_light_spot_height">214.5px</dimen>
+    <dimen name="zz_moto_fod_high_light_spot_width">214.5px</dimen>
+    <dimen name="zz_moto_fod_icon_height">214.5px</dimen>
+    <dimen name="zz_moto_fod_icon_width">214.5px</dimen>
+    <dimen name="zz_moto_fod_icon_x">540.0px</dimen>
+    <dimen name="zz_moto_fod_icon_y">2159.0px</dimen>
+    <dimen name="zz_moto_fod_touch_distance_threshold">10.0px</dimen>
+</resources>
+
