@@ -7,9 +7,6 @@
 # A/B
 TARGET_IS_VAB := true
 
-# we don't use and flash vendor_boot
-TARGET_NOT_USE_VENDOR_BOOT := true
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
