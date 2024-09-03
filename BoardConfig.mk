@@ -31,7 +31,7 @@ TARGET_BOOTLOADER_BOARD_NAME := miami
 TARGET_SCREEN_DENSITY := 420
 
 # Fingerprint
-TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.miami
+TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.dubai
 SOONG_CONFIG_qtidisplay_udfps := true
 
 # Kernel
