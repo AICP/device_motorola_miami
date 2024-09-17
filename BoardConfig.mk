@@ -29,6 +29,12 @@ TARGET_BOOTLOADER_BOARD_NAME := miami
 
 # Display
 TARGET_SCREEN_DENSITY := 420
+SOONG_CONFIG_qtidisplay_brightness := true
+
+# Fingerprint
+TARGET_USES_EGISTEC_FINGERPRINT := true
+TARGET_USES_FINGERPRINT_V2_1 := false
+
 
 # Kernel
 BOARD_KERNEL_CMDLINE += androidboot.hab.product=miami
