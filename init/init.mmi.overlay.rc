@@ -1,13 +1,12 @@
 on post-fs
-    # "Tap to wake" gesture
-    chown root input /sys/class/sensors/dt-gesture/enable
-    chmod 0660 /sys/class/sensors/dt-gesture/enable
-    chown root input /sys/class/sensors/dt-gesture/poll_delay
-    chmod 0660 /sys/class/sensors/dt-gesture/poll_delay
-
-on post-fs
     chown system system /sys/devices/platform/soc/4804000.ufshc/clkgate_enable
     chown system system /sys/devices/platform/soc/4804000.ufshc/devfreq/4804000.ufshc/min_freq
+
+    # Sensors
+    chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/double_tap_enabled
+    chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/double_tap_pressed
+    chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_enabled
+    chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_pressed
 
 on post-fs-data
 
