@@ -63,6 +63,12 @@ struct BiometricsFingerprint : public IBiometricsFingerprint {
     Return<void> onFingerUp() override;
 
 private:
+    void disableHighBrightFod();
+    void enableHighBrightFod();
+
+    bool hbmFodEnabled;
+    std::mutex mSetHbmFodMutex;
+
     sp<IBiometricsFingerprint_2_1> biometrics_2_1_service;
     sp<IMotoFingerPrint> mMotoFingerprint;
 };
