@@ -18,10 +18,12 @@
 #include "BiometricsFingerprint.h"
 
 #include <android-base/logging.h>
+#include <android-base/file.h>
 #include <fstream>
 #include <cmath>
 #include <thread>
 
+#include <chrono>
 #include <fcntl.h>
 #include <poll.h>
 #include <sys/stat.h>
@@ -29,7 +31,7 @@
 #define NOTIFY_FINGER_UP IMotFodEventType::FINGER_UP
 #define NOTIFY_FINGER_DOWN IMotFodEventType::FINGER_DOWN
 
-#define FOD_UI_PATH "/sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_pressed"
+#define FOD_HBM_PATH "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_hbm"
 
 namespace android {
 namespace hardware {
@@ -38,52 +40,40 @@ namespace fingerprint {
 namespace V2_3 {
 namespace implementation {
 
-static bool readBool(int fd) {
-    char c;
-    int rc;
+void setFodHbm(bool status) {
+    android::base::WriteStringToFile(status ? "1" : "0", FOD_HBM_PATH);
+}
 
-    rc = lseek(fd, 0, SEEK_SET);
-    if (rc) {
-        LOG(ERROR) << "failed to seek fd, err: " << rc;
-        return false;
-    }
+void BiometricsFingerprint::disableHighBrightFod() {
+    std::lock_guard<std::mutex> lock(mSetHbmFodMutex);
 
-    rc = read(fd, &c, sizeof(char));
-    if (rc != 1) {
-        LOG(ERROR) << "failed to read bool from fd, err: " << rc;
-        return false;
-    }
+    if (!hbmFodEnabled)
+        return;
 
-    return c != '0';
+    mMotoFingerprint->sendFodEvent(NOTIFY_FINGER_UP, {},
+                                   [](IMotFodEventResult, const hidl_vec<signed char> &) {});
+    setFodHbm(false);
+
+    hbmFodEnabled = false;
+}
+
+void BiometricsFingerprint::enableHighBrightFod() {
+    std::lock_guard<std::mutex> lock(mSetHbmFodMutex);
+
+    if (hbmFodEnabled)
+        return;
+
+    setFodHbm(true);
+    mMotoFingerprint->sendFodEvent(NOTIFY_FINGER_DOWN, {},
+                                   [](IMotFodEventResult, const hidl_vec<signed char> &) {});
+
+    hbmFodEnabled = true;
 }
 
 BiometricsFingerprint::BiometricsFingerprint() {
     biometrics_2_1_service = IBiometricsFingerprint_2_1::getService();
     mMotoFingerprint = IMotoFingerPrint::getService();
-
-    std::thread([this]() {
-        int fd = open(FOD_UI_PATH, O_RDONLY);
-        if (fd < 0) {
-            LOG(ERROR) << "failed to open fd, err: " << fd;
-            return;
-        }
-
-        struct pollfd fodUiPoll = {
-            .fd = fd,
-            .events = POLLERR | POLLPRI,
-            .revents = 0,
-        };
-
-        while (true) {
-            int rc = poll(&fodUiPoll, 1, -1);
-            if (rc < 0) {
-                LOG(ERROR) << "failed to poll fd, err: " << rc;
-                continue;
-            }
-            mMotoFingerprint->sendFodEvent(readBool(fd) ? NOTIFY_FINGER_DOWN : NOTIFY_FINGER_UP , {},
-                [](IMotFodEventResult, const hidl_vec<signed char>&) {});
-        }
-    }).detach();
+    hbmFodEnabled = false;
 }
 
 Return<uint64_t> BiometricsFingerprint::setNotify(const sp<IBiometricsFingerprintClientCallback>& clientCallback) {
@@ -107,7 +97,9 @@ Return<uint64_t> BiometricsFingerprint::getAuthenticatorId() {
 }
 
 Return<RequestStatus> BiometricsFingerprint::cancel() {
-    return biometrics_2_1_service->cancel();
+    auto ret = biometrics_2_1_service->cancel();
+    BiometricsFingerprint::onFingerUp();
+    return ret;
 }
 
 Return<RequestStatus> BiometricsFingerprint::enumerate() {
@@ -131,13 +123,20 @@ Return<bool> BiometricsFingerprint::isUdfps(uint32_t) {
 }
 
 Return<void> BiometricsFingerprint::onFingerDown(uint32_t, uint32_t, float, float) {
-    return mMotoFingerprint->sendFodEvent(NOTIFY_FINGER_DOWN, {},
-          [](IMotFodEventResult, const hidl_vec<signed char>&) {});
+    BiometricsFingerprint::enableHighBrightFod();
+
+    std::thread([this]() {
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        BiometricsFingerprint::onFingerUp();
+    }).detach();
+
+    return Void();
 }
 
 Return<void> BiometricsFingerprint::onFingerUp() {
-    return mMotoFingerprint->sendFodEvent(NOTIFY_FINGER_UP, {},
-          [](IMotFodEventResult, const hidl_vec<signed char>&) {});
+    BiometricsFingerprint::disableHighBrightFod();
+
+    return Void();
 }
 
 }  // namespace implementation
