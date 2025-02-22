@@ -11,10 +11,6 @@ include device/motorola/sm6375-common/BoardConfigCommon.mk
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := miami
 
-# Fingerprint
-TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.miami
-SOONG_CONFIG_qtidisplay_udfps := true
-
 # HIDL
 ODM_MANIFEST_SKUS += dn n
 ODM_MANIFEST_DN_FILES := $(DEVICE_PATH)/sku/manifest_dn.xml
