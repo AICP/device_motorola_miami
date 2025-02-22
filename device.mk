@@ -49,11 +49,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.3-service.miami
 
-# GMS
-ifeq ($(WITH_GMS),true)
-GMS_MAKEFILE=gms_minimal.mk
-endif
-
 # Init
 $(foreach f,$(wildcard $(LOCAL_PATH)/rootdir/etc/init/hw/*.rc),\
         $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/$(notdir $f)))
