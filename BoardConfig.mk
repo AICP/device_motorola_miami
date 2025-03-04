@@ -34,6 +34,9 @@ TARGET_SCREEN_DENSITY := 420
 TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.miami
 SOONG_CONFIG_qtidisplay_udfps := true
 
+# HIDL
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
+
 # Kernel
 BOARD_KERNEL_CMDLINE += androidboot.hab.product=miami
 TARGET_KERNEL_CONFIG := vendor/aicp_miami_defconfig
