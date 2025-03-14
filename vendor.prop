@@ -1,5 +1,15 @@
+# Audio
+persist.vendor.audio.fluence.voicecomm=true
+persist.vendor.audio.voicecall.speaker.stereo=false
+
 # Camera
 persist.vendor.camera.physical.num=3
 
+# Display
+ro.surface_flinger.set_idle_timer_ms=500
+
 # NFC
 persist.vendor.nfc.config_file_name=libnfc-PN557.conf
+
+# Radio
+ro.vendor.radio.imei.sv=52
