@@ -52,9 +52,6 @@ on post-fs-data
 on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -r -d /vendor/lib/modules/${ro.vendor.mot.gki.path} zram
 
-on late-init
-    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules/${ro.vendor.mot.gki.path} moto_mm moto_swap
-
 on fs
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mm8013c_fg_mmi.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/goodix_brl_mmi.ko

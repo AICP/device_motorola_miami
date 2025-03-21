@@ -76,5 +76,3 @@ wl2864c.ko
 bq25980_mmi_iio.ko
 leds_aw2033.ko
 cps4019_wls_charger.ko
-moto_mm.ko
-moto_swap.ko
