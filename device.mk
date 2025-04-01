@@ -23,11 +23,11 @@ $(call inherit-product, device/motorola/sm6375-common/common.mk)
 
 # Overlays
 PRODUCT_PACKAGES += \
-    FrameworksResMiami \
-    LineageSystemUIMiami \
-    SettingsResMiami \
-    SystemUIResMiami \
-    WifiResMiami
+    FrameworksResDevice \
+    LineageSystemUIDevice \
+    SettingsResDevice \
+    SystemUIResDevice \
+    WifiResDevice
 
 # Audio
 PRODUCT_COPY_FILES += \
