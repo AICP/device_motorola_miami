@@ -92,8 +92,6 @@ blocklist rcutorture
 # Motorola platform module block list
 #
 blocklist utags
-blocklist watchdogtest
-blocklist moto_f_usbnet
 # Copyright (c) 2019-2020, The Linux Foundation. All rights reserved.
 #
 # Motorola product module block list

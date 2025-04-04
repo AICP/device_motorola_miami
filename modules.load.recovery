@@ -10,7 +10,6 @@ mmi_discrete_charger_class.ko
 mmi_info.ko
 mmi_relay.ko
 mmi_sys_temp.ko
-moto_f_usbnet.ko
 qpnp_adaptive_charge.ko
 rt_pd_manager.ko
 sensors_class.ko

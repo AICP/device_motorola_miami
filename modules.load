@@ -45,8 +45,6 @@ mmi_info.ko
 mmi_annotate.ko
 sensors_class.ko
 exfat.ko
-moto_f_usbnet.ko
-watchdogtest.ko
 qpnp_adaptive_charge.ko
 rbs_fod_mmi.ko
 aw862x.ko
