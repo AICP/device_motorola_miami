@@ -8,5 +8,5 @@
     <bool name="config_show_regulatory_info">true</bool>
 
     <!-- The radius of the enrollment progress bar, in dp -->
-    <integer name="config_udfpsEnrollProgressBar">65</integer>
+    <integer name="config_udfpsEnrollProgressBar">75</integer>
 </resources>
