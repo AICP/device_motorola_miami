@@ -2,4 +2,4 @@
 persist.vendor.camera.physical.num=4
 
 # NFC
-ro.vendor.hw.nfc=st
+persist.vendor.nfc.config_file_name=libnfc-PN557.conf

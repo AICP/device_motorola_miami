@@ -3,3 +3,6 @@ ro.opa.device_model_id=motorola-miami
 
 # Motorola
 ro.mot.build.customerid=global
+
+# NFC
+persist.nfc_cfg.config_file_name=libnfc-nci_PN557.conf
