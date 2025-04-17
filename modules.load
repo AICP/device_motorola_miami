@@ -67,8 +67,6 @@ bq2589x_charger.ko
 mmi_charger.ko
 mmi_discrete_charger_class.ko
 mmi_discrete_charger.ko
-leds_aw99703.ko
-leds_lm3697.ko
 mmi_discrete_turbo_charger.ko
 wl2864c.ko
 bq25980_mmi_iio.ko
