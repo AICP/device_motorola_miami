@@ -31,6 +31,7 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    audio_amplifier.lahaina \
     firmware_aw_cali.bin_symlink
 
 PRODUCT_COPY_FILES += \

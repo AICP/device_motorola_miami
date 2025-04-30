@@ -8,6 +8,9 @@ DEVICE_PATH := device/motorola/miami
 # Inherit from motorola sm6375-common
 include device/motorola/sm6375-common/BoardConfigCommon.mk
 
+# Audio
+AUDIO_FEATURE_ENABLED_EXT_AMPLIFIER := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := miami
 
