@@ -48,9 +48,6 @@ on post-fs-data
     chown system system /sys/class/power_supply/bq25960-slave/voltage_now
     chmod 0664 /sys/class/power_supply/bq25960-slave/voltage_now
 
-on early-init
-    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -r -d /vendor/lib/modules/${ro.vendor.mot.gki.path} zram
-
 on fs
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mm8013c_fg_mmi.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/goodix_brl_mmi.ko
