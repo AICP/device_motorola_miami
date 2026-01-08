@@ -1,4 +1,4 @@
-# All unpinned blobs are extracted from miami_g U1SSMS34.31-64-10-6
+# All unpinned blobs are extracted from miami_g U1SSMS34.31-64-10-10
 
 # ACDB Data
 vendor/etc/acdbdata/Bluetooth_cal.acdb
@@ -87,7 +87,6 @@ vendor/lib64/libofflinedump.so
 vendor/lib64/libofflinelog.so
 vendor/lib64/libopencv.so
 vendor/lib64/libopestriping.so
-vendor/lib64/libos.so
 vendor/lib64/libqll10.so
 vendor/lib64/libqllengine.so
 vendor/lib64/libremosaic_wrapper.so
