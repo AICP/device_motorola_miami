@@ -241,10 +241,4 @@
         <item>2159</item> <!-- sensorLocationY -->
         <item>95</item> <!-- sensorRadius -->
     </integer-array>
-
-    <!-- Whether this device is supporting the software microphone toggle -->
-    <bool name="config_supportsMicToggle">true</bool>
-
-    <!-- Whether this device is supporting the camera toggle -->
-    <bool name="config_supportsCamToggle">true</bool>
 </resources>
