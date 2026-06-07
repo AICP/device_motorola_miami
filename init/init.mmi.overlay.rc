@@ -1,7 +1,4 @@
 on post-fs
-    chown system system /sys/devices/platform/soc/4804000.ufshc/clkgate_enable
-    chown system system /sys/devices/platform/soc/4804000.ufshc/devfreq/4804000.ufshc/min_freq
-
     # Sensors
     chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/double_tap_enabled
     chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/double_tap_pressed
@@ -9,44 +6,18 @@ on post-fs
     chown system system /sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_pressed
 
 on post-fs-data
-
-    chown system system /sys/devices/platform/soc/soc:fm_wcn39x0/elna_en
-
-    chown system system /sys/bus/iio/devices/iio:device5/in_index_sc8549_cp_enable_input
-    chmod 0664 /sys/bus/iio/devices/iio:device5/in_index_sc8549_cp_enable_input
     # Add for Egis Fod fingerprint
     mkdir /data/vendor/egis 0770 system system
-    mkdir /mnt/vendor/persist/egis 0770 system system
+    mkdir /data/vendor/egis/cqa 0770 system system
     mkdir /data/vendor/tzstorage/egis 0770 system system
-    mkdir /data/vendor/egis/cqa  0770 system system
-
-    # Add for after-sale ois gyro cal
-    mkdir /mnt/vendor/persist/camera/gyro_compat 0770 vendor_tcmd camera
-
-    # Add for OIS hall test result
-    mkdir /mnt/vendor/persist/camera/ois_hall 0770 vendor_tcmd camera
 
     # Add for fod fps calibration
     chown system system /sys/class/backlight/panel0-backlight/brightness
     chown system system /sys/class/drm/card0-DSI-1/panelName
     chown system system /sys/class/drm/card0-DSI-1/panelId
-    chown system system /d/dri/0/debug/motUtil
-    chmod 0666 /d/dri/0/debug/motUtil;
     chmod 0666 /sys/class/backlight/panel0-backlight/brightness
     chmod 0666 /sys/class/drm/card0-DSI-1/panelName
     chmod 0666 /sys/class/drm/card0-DSI-1/panelId
-    # change permission for goodix TP
-    chmod 0666 /dev/gtp_tools
-
-    # Change ownership and permission for bq25960 factory testing
-    chown system system /sys/class/power_supply/bq25960-master/device/force_chg_auto_enable
-    chmod 0664 /sys/class/power_supply/bq25960-master/device/force_chg_auto_enable
-    chown system system /sys/class/power_supply/bq25960-slave/device/force_chg_auto_enable
-    chmod 0664 /sys/class/power_supply/bq25960-slave/device/force_chg_auto_enable
-    chown system system /sys/class/power_supply/bq25960-master/voltage_now
-    chmod 0664 /sys/class/power_supply/bq25960-master/voltage_now
-    chown system system /sys/class/power_supply/bq25960-slave/voltage_now
-    chmod 0664 /sys/class/power_supply/bq25960-slave/voltage_now
 
 on fs
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mm8013c_fg_mmi.ko
@@ -66,44 +37,7 @@ on fs
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/aw862x.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/rbs_fod_mmi.ko
 
-on early-boot
-    # Add for egis fingerprint
-    chown system system /dev/esfp0
-    chmod 0664 /dev/esfp0
-
 on boot
-    # change permission of red/green/blue leds
-    chown system system /sys/class/leds/red_moto/brightness
-    chmod 0666 /sys/class/leds/red_moto/brightness
-    chown system system /sys/class/leds/green_moto/brightness
-    chmod 0666 /sys/class/leds/green_moto/brightness
-    chown system system /sys/class/leds/blue_moto/brightness
-    chmod 0666 /sys/class/leds/blue_moto/brightness
-
-    #change leds system nodes ownership for HAL service
-    chown system system /sys/class/leds/red_moto/blink
-    chmod 0666 /sys/class/leds/red_moto/blink
-    chown system system /sys/class/leds/green_moto/blink
-    chmod 0666 /sys/class/leds/green_moto/blink
-    chown system system /sys/class/leds/blue_moto/blink
-    chmod 0666 /sys/class/leds/blue_moto/blink
-
-    chown system system /sys/class/leds/red_moto/led_time
-    chmod 0666 /sys/class/leds/red_moto/led_time
-    chown system system /sys/class/leds/green_moto/led_time
-    chmod 0666 /sys/class/leds/green_moto/led_time
-    chown system system /sys/class/leds/blue_moto/led_time
-    chmod 0666 /sys/class/leds/blue_moto/led_time
-
-    # touch api
-    chown system system /sys/class/touchscreen/primary/sample
-    chmod 0660 /sys/class/touchscreen/primary/sample
-    chown system system /sys/class/touchscreen/primary/edge
-    chmod 0660 /sys/class/touchscreen/primary/edge
-
-    chown system system /sys/class/touchscreen/primary/gesture
-    chmod 0660 /sys/class/touchscreen/primary/gesture
-
     # Set wlc perms for chg
     chown system system /sys/class/power_supply/wireless/device/tx_mode
     chown system system /sys/class/power_supply/wireless/device/wls_input_current_limit
@@ -119,9 +53,6 @@ on boot
     chown system system /sys/class/power_supply/wireless/device/wlc_tx_type
     chmod 0660 /sys/class/power_supply/wireless/device/wlc_light_ctl
     chmod 0660 /sys/class/power_supply/wireless/device/wlc_fan_speed
-
-on boot && property:ro.vendor.mot.gki.path=5.4-gki
-    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/nfc_i2c.ko
 
 on charger
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mm8013c_fg_mmi.ko
